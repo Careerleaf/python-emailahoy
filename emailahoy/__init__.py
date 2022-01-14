@@ -49,10 +49,10 @@ def query_mx(host):
     addr = {}
     fout, fin = popen2.popen2('which nslookup')
     cmd = fout.readline().strip()
-    if cmd <> '':
+    if cmd != '':
         fout, fin = popen2.popen2('%s -query=mx %s' % (cmd, host))
         line = fout.readline()
-        while line <> '':
+        while line != '':
             mx = MX_RE.search(line.lower())
             if mx:
                 mail_exchangers.append((eval(mx.group(1)), mx.group(2)))
